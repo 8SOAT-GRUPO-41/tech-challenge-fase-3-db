@@ -47,13 +47,13 @@ module "lanchonete_rds" {
   engine_version         = "16.3"
   instance_class         = "db.t3.micro"
   allocated_storage      = 10
-  username               = "postgres"
-  password               = "postgres"
+  username               = var.rds_username
+  password               = var.rds_password
   publicly_accessible    = true
   vpc_security_group_ids = [module.lanchonete_rds_sg.security_group_id]
   name                   = "lanchonete-rds"
   subnet_group_name      = "lanchonete-subnet-group"
-  db_name                = "lanchonete"
+  db_name                = var.rds_db_name
   parameter_group_name   = "postgres16"
 
   subnet_ids = [
